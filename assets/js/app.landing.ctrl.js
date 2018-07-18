@@ -1,0 +1,3 @@
+app.controller("app.ctrl.landing", function ($scope) {
+	// body...
+})
