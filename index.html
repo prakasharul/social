@@ -7,6 +7,20 @@
 	</head>
 	<body ng-app="CodelifeSocial">
 
+		<a href="" ng-click="login()">login</a>
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
+		<script>
+		    FB.init({
+		      appId      : '120828908565639',     
+		      status: true, 
+		      cookie: true, 
+		      xfbml: true,
+		      version: 'v2.4'
+		    });
+		</script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+		<script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+		<script type="text/javascript" src="assets/js/app.js"></script>
+		<script type="text/javascript" src="assets/js/app.landing.ctrl.js"></script>
 	</body>
 </html>
