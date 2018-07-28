@@ -11,15 +11,18 @@ app.service('Facebook', function($q, $rootScope) {
         });
     }
 
+
+
     return {
         logIn: function(FB) {
             var deferred = $q.defer();
              FB.login(function(response) {
+                var status = response;
+                console.log(response);
                 if (response.authResponse) {
-                    FB.getLoginStatus(function(response) {
-                        var access_token = response.authResponse.accessToken;
-                        console.log(access_token);
-                    });
+                    var access_token = response.authResponse.accessToken;
+                    console.log(access_token);
+
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
                 }
@@ -28,9 +31,18 @@ app.service('Facebook', function($q, $rootScope) {
                 return_scopes: true,
                 auth_type: 'reauthenticate'
             });
-        }
-    };
-    return {
+             return status
+        },
+
+        logOut: function(FB) {
+            var deferred = $q.defer();
+             FB.logout(function(response) {
+                var status = response;
+                console.log(response);
+            });
+             return status
+        },
+
         getMyLastName: function() {
             var deferred = $q.defer();
             FB.api('/me', {
@@ -45,21 +57,4 @@ app.service('Facebook', function($q, $rootScope) {
             return deferred.promise;
         }
     };
-
-    return {
-        fbLogin: function(FB) {
-            FB.login(function(response) {
-                if (response.authResponse) {
-                    FB.getLoginStatus(function(response) {
-                        var access_token = response.authResponse.accessToken;
-                        console.log(access_token);
-                    });
-                } else {
-                    console.log('User cancelled login or did not fully authorize.');
-                }
-            });
-            return access_token
-        }
-    };
-
 });
