@@ -1,2 +1,2 @@
-var app = angular.module("CodelifeSocial", []);
+var app = angular.module("CodelifeSocial", ["ngRoute"]);
 
