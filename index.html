@@ -7,12 +7,23 @@
     </title>
 </head>
 
-<body ng-app="CodelifeSocial" ng-controller="landingCtrl">
-    <a href="" ng-click="login()">login</a>
-    <script src="http://connect.facebook.net/en_US/all.js"></script>
+<body ng-app="CodelifeSocial">
+    <div ng-view>
+        
+    </div>
+
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <!-- facebook scripts -->
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script type="text/javascript" src="assets/js/fbInit.js"></script>
     <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <!-- angularjs properties -->
     <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/routes.js"></script>
     <script type="text/javascript" src="assets/js/service.js"></script>
     <script type="text/javascript" src="assets/js/landingCtrl.js"></script>
 </body>
