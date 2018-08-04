@@ -31,6 +31,7 @@ app.service('facebookService', function($q, $rootScope) {
                             if (typeof(Storage) !== "undefined") {
                                 localStorage.setItem("fb_user_access_token", access_token);
                                 console.log(localStorage.getItem("fb_user_access_token"));
+
                             } else {
                                 console.log("Sorry! No Web Storage support..");
                             }
@@ -56,8 +57,12 @@ app.service('facebookService', function($q, $rootScope) {
              return status
         },
 
-        fbApi: function (FB) {
-          FB.api('')
+        fbAccounts: function (FB, access_token) {
+          FB.api('me?fields=id,name,accounts&access_token='+access_token, function (response) {
+              console.log(response);
+              accounts = response
+          });
+          return accounts
         }
 
     };
