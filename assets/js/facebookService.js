@@ -11,17 +11,30 @@ app.service('facebookService', function($q, $rootScope) {
         });
     }
 
-
+    var APP_ID = '120828908565639'
+    var APP_SECRET = '7d79ba2e5428420b58e5a403e637e4e2'
 
     return {
         logIn: function(FB) {
             var deferred = $q.defer();
              FB.login(function(response) {
-                var status = response;
-                console.log(response);
+
+                // get auth status
                 if (response.authResponse) {
-                    var access_token = response.authResponse.accessToken;
-                    console.log(access_token);
+                    var access = response.authResponse.accessToken;
+                    
+                    // extend access_token
+                    FB.api('/oauth/access_token?grant_type=fb_exchange_token&client_id='+APP_ID+'&client_secret='+APP_SECRET+'&fb_exchange_token='+access,
+                        function(response){
+                            var access_token = response.access_token;
+
+                            if (typeof(Storage) !== "undefined") {
+                                localStorage.setItem("fb_user_access_token", access_token);
+                                console.log(localStorage.getItem("fb_user_access_token"));
+                            } else {
+                                console.log("Sorry! No Web Storage support..");
+                            }
+                    });
 
                 } else {
                     console.log('User cancelled login or did not fully authorize.');
@@ -43,18 +56,9 @@ app.service('facebookService', function($q, $rootScope) {
              return status
         },
 
-        getMyLastName: function() {
-            var deferred = $q.defer();
-            FB.api('/me', {
-                fields: 'last_name'
-            }, function(response) {
-                if (!response || response.error) {
-                    deferred.reject('Error occured');
-                } else {
-                    deferred.resolve(response);
-                }
-            });
-            return deferred.promise;
+        fbApi: function (FB) {
+          FB.api('')
         }
+
     };
 });
