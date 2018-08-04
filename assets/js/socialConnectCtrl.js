@@ -1,7 +1,10 @@
-app.controller("socialConnectCtrl", function($scope,facebookService) {
-$scope.facebook_login = function() {
-    	$scope.status = facebookService.logIn(FB);	
-    	// console.log(localStorage.getItem("fb_user_access_token"));
+app.controller("socialConnectCtrl", function($scope,facebookService,$location) {
+	$scope.facebook_login = function() {
+    	facebookService.logIn(FB);
+    	$location.path('/social-channel-list/');
+
+
+
     };
 
     $scope.facebook_logout = function(){
