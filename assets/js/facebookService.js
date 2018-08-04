@@ -27,7 +27,7 @@ app.service('facebookService', function($q, $rootScope) {
                     console.log('User cancelled login or did not fully authorize.');
                 }
             },{
-                scope: 'publish_actions, email, user_likes,user_events, user_photos, user_posts, user_friends, user_location, business_management',
+                scope: 'publish_pages, manage_pages, email, user_likes,user_events, user_photos, user_posts, user_friends, user_location, business_management',
                 return_scopes: true,
                 auth_type: 'reauthenticate'
             });
