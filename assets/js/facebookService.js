@@ -1,5 +1,5 @@
 
-app.service('Facebook', function($q, $rootScope) {
+app.service('facebookService', function($q, $rootScope) {
     resolve = function(errval, retval, deferred) {
         $rootScope.$apply(function() {
             if (errval) {
